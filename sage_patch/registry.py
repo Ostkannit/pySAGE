@@ -21,6 +21,7 @@ from sage_patch.patches.replay_outcome import ReplayOutcomePatch
 from sage_patch.patches.science_prereqs import SciencePrereqPatch
 from sage_patch.patches.second_resource import SecondResourcePatch
 from sage_patch.patches.skirmish_replay import SkirmishReplayPatch
+from sage_patch.patches.spellstore_commandset_upgrade import SpellStoreCommandSetUpgradePatch
 from sage_patch.patches.spawn_union import SpawnUnionPatch
 from sage_patch.patches.terrain_resource_exp import TerrainResourceExpPatch
 from sage_patch.patches.unique_production_id import UniqueProductionIdPatch
@@ -48,6 +49,7 @@ PATCHES: dict[str, type[Patch]] = {
     SciencePrereqPatch.name: SciencePrereqPatch,
     HeroBarPatch.name: HeroBarPatch,
     MultiExecuteGatePatch.name: MultiExecuteGatePatch,
+    SpellStoreCommandSetUpgradePatch.name: SpellStoreCommandSetUpgradePatch,
     SpawnUnionPatch.name: SpawnUnionPatch,
     MultiInstancePatch.name: MultiInstancePatch,
     MultiInstanceLauncherPatch.name: MultiInstanceLauncherPatch,

@@ -72,6 +72,10 @@ every mod on it (Edain among them), not one in particular. All of them target `g
   with mode 2 added, so the patch aims one `call` at it — five bytes, no cave. The natural
   companion to `skirmish-replay`, and independent of it. Client-local. **Not yet runtime-verified
   in game.**
+- **`spellstore-commandset-upgrade`** adds `PurchaseScienceCommandSetMP2` and
+  `PurchaseScienceNeededUpgrade` to `PlayerTemplate`, then flips the SpellStore to MP2 while the
+  owning player has the chosen upgrade. It leaves the ControlBar alone and only changes the UI
+  command-set selection.
 - **`terrain-resource-exp`** adds a **`GiveNoXP`** boolean to `TerrainResourceBehavior`, so a
   resource spot can pay its owner without levelling its own building. The module hands the integer
   it just deposited to the building's `ExperienceTracker` on every income tick, and no INI field
@@ -225,6 +229,11 @@ sage-patch verify cah-factions --sides Rohan,Lothlorien game.dat
 sage-patch apply ai-revive-gate --in game.dat.backup --out game.dat   # no parameters
 sage-patch verify ai-revive-gate game.dat
 
+# adds `PurchaseScienceCommandSetMP2` and `PurchaseScienceNeededUpgrade` to `PlayerTemplate`
+# so the SpellStore can point at the MP2 command set while the required upgrade is owned
+sage-patch apply spellstore-commandset-upgrade --in game.dat.backup --out game.dat
+sage-patch verify spellstore-commandset-upgrade game.dat
+
 sage-patch apply production-condition --condition PRODUCING \
     --in game.dat.backup --out game.dat
 sage-patch verify production-condition --condition PRODUCING game.dat
@@ -342,6 +351,7 @@ apply_patches(
 | [`patches/commandset.py`](patches/commandset.py) | `CommandSetLimitPatch` — raise the CommandSet button limit to any N (grow the object + relocate/enlarge the field-parse table + widen the AI's set-walk) |
 | [`patches/cah_factions.py`](patches/cah_factions.py) | `CahFactionsPatch` — add mod sides + an `All` token to the CAH faction enum (superset name table + a `UsableFactions` parser wrapper) |
 | [`patches/ai_revive_gate.py`](patches/ai_revive_gate.py) | `AiReviveGatePatch` — route `canMakeUnit`'s revive branch through the engine's own `NeededUpgrade` check |
+| [`patches/spellstore_commandset_upgrade.py`](patches/spellstore_commandset_upgrade.py) | `SpellStoreCommandSetUpgradePatch` — add `PurchaseScienceCommandSetMP2` and `PurchaseScienceNeededUpgrade` to `PlayerTemplate`, then make the SpellStore select MP2 while the owning player has the configured upgrade |
 | [`patches/production_condition.py`](patches/production_condition.py) | `ProductionConditionPatch` — name the first unused model-condition bit and drive it from `ProductionUpdate`'s queue, optionally with a weapon-set flag and a locomotor set on the same trigger |
 | [`patches/name_tables.py`](patches/name_tables.py) | the three moves every name-table extension makes — read the live table, rebuild it into a cave by pointer, repoint every reference — shared by the three table owners below |
 | [`patches/model_conditions.py`](patches/model_conditions.py) | owner of the `ModelConditionFlags` table: its 16 references, its 10 count bounds and the `xfer` blob width |
