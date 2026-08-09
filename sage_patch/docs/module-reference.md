@@ -4004,7 +4004,7 @@ constant-tracking through each constructor.
 
 ## TooltipUpgrade
 
-`sizeof(ModuleData)` = 0x140, 8 fields
+`sizeof(ModuleData)` = 0x140, 10 fields
 
 | field | type | offset | default |
 |---|---|---|---|
@@ -4012,9 +4012,11 @@ constant-tracking through each constructor.
 | `CustomAnimAndDuration` | AnimAndDuration | `0x120` | - |
 | `Description` | AsciiString | `0x13c` | - |
 | `DisplayName` | AsciiString | `0x138` | `""` |
+| `ButtonImage` | AsciiString | `0x134` | `""` |
 | `Permanent` | Bool | `0x12e` | - |
 | `RequiresAllConflictingTriggers` | Bool | `0x12d` | - |
 | `RequiresAllTriggers` | Bool | `0x12c` | `No` |
+| `SelectPortrait` | AsciiString | `0x130` | `""` |
 | `TriggeredBy` | UpgradeMask | `0x0` | `0` |
 
 ## ToppleUpdate

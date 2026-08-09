@@ -23,6 +23,7 @@ from sage_patch.patches.second_resource import SecondResourcePatch
 from sage_patch.patches.skirmish_replay import SkirmishReplayPatch
 from sage_patch.patches.spawn_union import SpawnUnionPatch
 from sage_patch.patches.terrain_resource_exp import TerrainResourceExpPatch
+from sage_patch.patches.tooltip_image_upgrade import TooltipImageUpgradePatch
 from sage_patch.patches.unique_production_id import UniqueProductionIdPatch
 
 # `horde-orphan-target` is deliberately absent: it applies and verifies cleanly but does not
@@ -49,6 +50,7 @@ PATCHES: dict[str, type[Patch]] = {
     HeroBarPatch.name: HeroBarPatch,
     MultiExecuteGatePatch.name: MultiExecuteGatePatch,
     SpawnUnionPatch.name: SpawnUnionPatch,
+    TooltipImageUpgradePatch.name: TooltipImageUpgradePatch,
     MultiInstancePatch.name: MultiInstancePatch,
     MultiInstanceLauncherPatch.name: MultiInstanceLauncherPatch,
 }

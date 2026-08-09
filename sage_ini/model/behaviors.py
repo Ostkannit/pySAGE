@@ -2431,7 +2431,10 @@ class AudioLoopUpgrade(UpgradeBehavior):
 
 
 class TooltipUpgrade(UpgradeBehavior):
+    ButtonImage: Image
     DisplayName: Label
+    Description: Label
+    SelectPortrait: Image
 
 
 class GarrisonUpgrade(UpgradeBehavior):

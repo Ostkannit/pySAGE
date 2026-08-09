@@ -141,6 +141,33 @@ def test_object_with_behaviors_and_weaponset():
     assert [type(m).__name__ for m in unit.modules] == ["AutoHealBehavior"]
 
 
+def test_tooltip_upgrade_is_object_specific_and_can_override_images():
+    game = load(
+        """\
+        Upgrade Upgrade_Test
+        End
+        Object TestUnit
+            Behavior = TooltipUpgrade ModuleTag_Tooltip
+                TriggeredBy = Upgrade_Test
+                SelectPortrait = UPGondor_Porter
+                ButtonImage = BIGondor_Porter
+                DisplayName = TestUnitDisplay
+                Description = TestUnitDescription
+            End
+        End
+        """
+    )
+    unit = game.objects["TestUnit"]
+    tooltip = unit.modules[0]
+
+    assert type(tooltip).__name__ == "TooltipUpgrade"
+    assert tooltip.TriggeredBy == [game.upgrades["Upgrade_Test"]]
+    assert tooltip.SelectPortrait == "UPGondor_Porter"
+    assert tooltip.ButtonImage == "BIGondor_Porter"
+    assert tooltip.DisplayName == "TestUnitDisplay"
+    assert tooltip.Description == "TestUnitDescription"
+
+
 def test_draw_modules_are_typed_and_grouped():
     game = load(
         """\

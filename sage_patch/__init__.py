@@ -70,6 +70,7 @@ from sage_patch.patches import (
     SkirmishReplayPatch,
     SpawnUnionPatch,
     TerrainResourceExpPatch,
+    TooltipImageUpgradePatch,
     UniqueProductionIdPatch,
 )
 from sage_patch.sagepatch import generate
@@ -92,6 +93,7 @@ __all__ = [
     "SkirmishReplayPatch",
     "SpawnUnionPatch",
     "TerrainResourceExpPatch",
+    "TooltipImageUpgradePatch",
     "UniqueProductionIdPatch",
     "apply_patches",
     "generate",
