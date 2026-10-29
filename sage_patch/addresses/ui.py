@@ -14,6 +14,10 @@ from sage_patch.addresses.player import (
 )
 
 __all__ = [
+    "COST_MODIFIER_PALANTIR_VALUE",
+    "COST_MODIFIER_PALANTIR_UPGRADE_QUERY",
+    "COST_MODIFIER_PALANTIR_UPGRADE_QUERY_BYTES",
+    "COST_MODIFIER_PALANTIR_UPGRADE_QUERY_RESUME",
     "TEXT_ENTRY_INPUT",
     "TEXT_ENTRY_CLIPBOARD_HOOK",
     "TEXT_ENTRY_CLIPBOARD_RESUME",
@@ -646,6 +650,15 @@ __all__ = [
     "VETERANCY_DRAW_CALL",
     "VETERANCY_DRAW_CALL_BYTES",
 ]
+
+# `CostModifierUpgrade`'s Palantir getter. The stock upgrade-mode arm constructs an empty
+# AsciiString and therefore asks the Player for the sum of every upgrade-discount record.
+COST_MODIFIER_PALANTIR_VALUE = 0x0092F712
+COST_MODIFIER_PALANTIR_UPGRADE_QUERY = 0x0092F722
+COST_MODIFIER_PALANTIR_UPGRADE_QUERY_BYTES = bytes.fromhex(
+    "518965fc8bcc68b862dc00e8fe67b0ff8b4d08e891f0d7ff"
+)
+COST_MODIFIER_PALANTIR_UPGRADE_QUERY_RESUME = 0x0092F73A
 
 # RotWK 2.01: the Ctrl navigation fallback, after Ctrl+Left/Right have branched away.
 TEXT_ENTRY_INPUT = 0x00722745
